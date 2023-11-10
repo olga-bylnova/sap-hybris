@@ -1,0 +1,7 @@
+/log
+/temp
+/bin/platform
+/bin/modules
+!/bin/custom
+/roles
+/data
