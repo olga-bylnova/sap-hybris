@@ -8,33 +8,73 @@
 
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:noNamespaceSchemaLocation="items.xsd">
-
+	<collectiontypes>
+		<collectiontype code="ProductsCollection" elementtype="Product" autocreate="true" generate="true"/>
+	</collectiontypes>
+	
+	<enumtypes>
+		<enumtype code="ProductCategory" autocreate="true" generate="true">
+			<value code="Electronics"/>
+			<value code="Clothing"/>
+			<value code="Sports"/>
+			<value code="Home"/>
+		</enumtype>
+		
+		<enumtype code="DiscountType" autocreate="true" generate="true" dynamic="true">
+			<value code="Percentage"/>
+			<value code="FixedAmount"/>
+			<value code="BundleDiscount"/>
+		</enumtype>
+	</enumtypes>
+	
+	<maptypes>
+		<maptype code="ProductStock" argumenttype="Product" returntype="java.lang.Integer" autocreate="true" generate="true"/>
+	</maptypes>
+	
+	<relations>
+		<relation code="Product2Variant" localized="false" autocreate="true" generate="true">
+		    <sourceElement qualifier="product" type="Product" cardinality="one">
+		        <modifiers read="true" write="true" search="true" optional="true" />
+		    </sourceElement>
+		    <targetElement qualifier="variantItems" type="ProductVariant" cardinality="many">
+		        <modifiers read="true" write="true" search="true" optional="true" />
+		    </targetElement>
+		</relation>
+		 <relation code="Promotion2Product" localized="false" autocreate="true" generate="true">
+		    <deployment table="Promotion2Product" typecode="9362" />
+		    <sourceElement qualifier="promotions" type="Promotion" cardinality="many">
+		        <modifiers read="true" write="true" search="true" optional="true" />
+		    </sourceElement>
+		    <targetElement qualifier="products" type="Product" cardinality="many">
+		        <modifiers read="true" write="true" search="true" optional="true" />
+		    </targetElement>
+		</relation>
+	</relations>
+	
 	<itemtypes>
-<!--
-		<itemtype generate="true"
-		   code="MyProduct"
-		   jaloclass="org.training.jalo.MyProduct"
-		   extends="Product"
-		   autocreate="true"
-	   >
-			<attributes>
-				<attribute qualifier="myExampleInitialStringField" type="java.lang.String">
-					<description>My Example Initial String Value</description>
-					<modifiers initial="true"/>
-					<persistence type="property"/>
-				</attribute>
-
-				<attribute qualifier="myExampleBooleanField" type="java.lang.Boolean">
-					<description>Example Initial Boolean Field</description>
-               <persistence type="property"/>
-				</attribute>
-
-				<attribute qualifier="media" type="Media">
-					<persistence type="property"/>
-				</attribute>
-
-			</attributes>
+		<itemtype code="Manufacturer" generate="true" autocreate="true">
+		    <deployment table="Manufacturer" typecode="1234" />
+		    <attributes>
+			<attribute qualifier="name" type="java.lang.String">
+			    <persistence type="property"/>
+			</attribute>
+		    </attributes>
 		</itemtype>
--->
-	</itemtypes>
+		<itemtype code="ProductVariant" generate="true" autocreate="true">
+		    <deployment table="ProductVariant" typecode="3409" />
+		    <attributes>
+			<attribute qualifier="name" type="java.lang.String">
+			    <persistence type="property"/>
+			</attribute>
+		    </attributes>
+		</itemtype>
+		<itemtype code="Promotion" generate="true" autocreate="true">
+		    <deployment table="Promotion" typecode="3421" />
+		    <attributes>
+			<attribute qualifier="name" type="java.lang.String">
+			    <persistence type="property"/>
+			</attribute>
+		    </attributes>	
+		</itemtype>
+	</itemtypes>	
 </items>
