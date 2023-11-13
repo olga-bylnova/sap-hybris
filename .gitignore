@@ -6,10 +6,10 @@
 /roles
 /data
 
-/bin/**/gensrc
-/bin/**/eclipsebin
-/bin/**/classes
+bin/**/gensrc
+bin/**/eclipsebin
+bin/**/classes
 
-/bin/custom/**/classes/**
-/bin/custom/**/gensrc/**
-/bin/custom/**/eclipsebin/**
+bin/custom/**/classes/**
+bin/custom/**/gensrc/**
+bin/custom/**/eclipsebin/**

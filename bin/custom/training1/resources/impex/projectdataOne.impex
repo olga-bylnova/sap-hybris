@@ -1,0 +1,14 @@
+INSERT_UPDATE Manufacturer;name[unique=true]
+;manufacturer1
+;manufacturer2
+
+INSERT_UPDATE ProductVariant;name[unique=true]
+;productVariant1
+;productVariant2
+
+INSERT_UPDATE Promotion;name[unique=true]
+;promotion1
+;promotion2
+
+INSERT_UPDATE TypeWithAttributes;name[unique=true];productCategory(code);manufacturer(name);manufacturerCollection(name);promotion2Product(source(name),target(name));productStock
+;TWA1;Electronics;manufacturer1;manufacturer1,manufacturer2;promotion1:productVariant1;1->abc,2->dfe

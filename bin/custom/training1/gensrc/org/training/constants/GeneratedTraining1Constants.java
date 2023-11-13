@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 12, 2023, 5:39:06 PM                    ---
+ * --- Generated at Nov 14, 2023, 1:18:10 AM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.constants;
@@ -21,6 +21,7 @@ public class GeneratedTraining1Constants
 		public static final String PRODUCTCATEGORY = "ProductCategory".intern();
 		public static final String PRODUCTVARIANT = "ProductVariant".intern();
 		public static final String PROMOTION = "Promotion".intern();
+		public static final String TYPEWITHATTRIBUTES = "TypeWithAttributes".intern();
 	}
 	public static class Attributes
 	{

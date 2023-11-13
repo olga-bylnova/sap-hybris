@@ -10,6 +10,7 @@
 			xsi:noNamespaceSchemaLocation="items.xsd">
 	<collectiontypes>
 		<collectiontype code="ProductsCollection" elementtype="Product" autocreate="true" generate="true"/>
+		<collectiontype code="ManufacturerCollection" elementtype="Manufacturer" autocreate="true" generate="true"/>
 	</collectiontypes>
 	
 	<enumtypes>
@@ -28,7 +29,7 @@
 	</enumtypes>
 	
 	<maptypes>
-		<maptype code="ProductStock" argumenttype="Product" returntype="java.lang.Integer" autocreate="true" generate="true"/>
+		<maptype code="ProductStock" argumenttype="java.lang.Integer" returntype="java.lang.String" autocreate="true" generate="true"/>
 	</maptypes>
 	
 	<relations>
@@ -41,11 +42,11 @@
 		    </targetElement>
 		</relation>
 		 <relation code="Promotion2Product" localized="false" autocreate="true" generate="true">
-		    <deployment table="Promotion2Product" typecode="9362" />
+		    <deployment table="Promotion2Product" typecode="17821" />
 		    <sourceElement qualifier="promotions" type="Promotion" cardinality="many">
 		        <modifiers read="true" write="true" search="true" optional="true" />
 		    </sourceElement>
-		    <targetElement qualifier="products" type="Product" cardinality="many">
+		    <targetElement qualifier="products" type="ProductVariant" cardinality="many">
 		        <modifiers read="true" write="true" search="true" optional="true" />
 		    </targetElement>
 		</relation>
@@ -53,7 +54,7 @@
 	
 	<itemtypes>
 		<itemtype code="Manufacturer" generate="true" autocreate="true">
-		    <deployment table="Manufacturer" typecode="1234" />
+		    <deployment table="Manufacturer" typecode="12345" />
 		    <attributes>
 			<attribute qualifier="name" type="java.lang.String">
 			    <persistence type="property"/>
@@ -61,7 +62,7 @@
 		    </attributes>
 		</itemtype>
 		<itemtype code="ProductVariant" generate="true" autocreate="true">
-		    <deployment table="ProductVariant" typecode="3409" />
+		    <deployment table="ProductVariant" typecode="30091" />
 		    <attributes>
 			<attribute qualifier="name" type="java.lang.String">
 			    <persistence type="property"/>
@@ -69,12 +70,35 @@
 		    </attributes>
 		</itemtype>
 		<itemtype code="Promotion" generate="true" autocreate="true">
-		    <deployment table="Promotion" typecode="3421" />
+		    <deployment table="Promotion" typecode="16732" />
 		    <attributes>
 			<attribute qualifier="name" type="java.lang.String">
 			    <persistence type="property"/>
 			</attribute>
 		    </attributes>	
+		</itemtype>
+		<itemtype code="TypeWithAttributes" generate="true" autocreate="true">
+		    <deployment table="TypeWithAttributes" typecode="21562" />
+		    <attributes>
+		    	<attribute qualifier="name" type="java.lang.String">
+			    <persistence type="property"/>
+			</attribute>
+			<attribute qualifier="manufacturerCollection" type="ManufacturerCollection">
+			    <persistence type="property"/>
+			</attribute>
+			<attribute qualifier="productCategory" type="ProductCategory">
+			    <persistence type="property"/>
+			</attribute>
+			<attribute qualifier="productStock" type="ProductStock">
+			    <persistence type="property"/>
+			</attribute>
+			<attribute qualifier="manufacturer" type="Manufacturer">
+			    <persistence type="property"/>
+			</attribute>
+			<attribute qualifier="promotion2Product" type="Promotion2Product">
+			    <persistence type="property"/>
+			</attribute>
+		    </attributes>
 		</itemtype>
 	</itemtypes>	
 </items>

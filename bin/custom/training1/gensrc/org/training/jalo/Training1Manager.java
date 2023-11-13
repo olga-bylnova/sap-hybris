@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 12, 2023, 5:39:06 PM                    ---
+ * --- Generated at Nov 14, 2023, 1:18:10 AM                    ---
  * ----------------------------------------------------------------
  */
 package org.training.jalo;
@@ -32,6 +32,7 @@ import org.training.constants.Training1Constants;
 import org.training.jalo.Manufacturer;
 import org.training.jalo.ProductVariant;
 import org.training.jalo.Promotion;
+import org.training.jalo.TypeWithAttributes;
 
 /**
  * Generated class for type <code>Training1Manager</code>.
@@ -151,6 +152,32 @@ public class Training1Manager extends Extension
 	public Promotion createPromotion(final Map attributeValues)
 	{
 		return createPromotion( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public TypeWithAttributes createTypeWithAttributes(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType("TypeWithAttributes");
+			return (TypeWithAttributes)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating TypeWithAttributes : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public TypeWithAttributes createTypeWithAttributes(final Map attributeValues)
+	{
+		return createTypeWithAttributes( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public static final Training1Manager getInstance()
