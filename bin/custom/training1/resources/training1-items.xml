@@ -6,99 +6,100 @@
 	ATTENTION: This is just an example file. You have to edit it according to your needs.
 -->
 
-<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-			xsi:noNamespaceSchemaLocation="items.xsd">
-	<collectiontypes>
-		<collectiontype code="ProductsCollection" elementtype="Product" autocreate="true" generate="true"/>
-		<collectiontype code="ManufacturerCollection" elementtype="Manufacturer" autocreate="true" generate="true"/>
-	</collectiontypes>
-	
-	<enumtypes>
-		<enumtype code="ProductCategory" autocreate="true" generate="true">
-			<value code="Electronics"/>
-			<value code="Clothing"/>
-			<value code="Sports"/>
-			<value code="Home"/>
-		</enumtype>
-		
-		<enumtype code="DiscountType" autocreate="true" generate="true" dynamic="true">
-			<value code="Percentage"/>
-			<value code="FixedAmount"/>
-			<value code="BundleDiscount"/>
-		</enumtype>
-	</enumtypes>
-	
-	<maptypes>
-		<maptype code="ProductStock" argumenttype="java.lang.Integer" returntype="java.lang.String" autocreate="true" generate="true"/>
-	</maptypes>
-	
-	<relations>
-		<relation code="Product2Variant" localized="false" autocreate="true" generate="true">
-		    <sourceElement qualifier="product" type="Product" cardinality="one">
-		        <modifiers read="true" write="true" search="true" optional="true" />
-		    </sourceElement>
-		    <targetElement qualifier="variantItems" type="ProductVariant" cardinality="many">
-		        <modifiers read="true" write="true" search="true" optional="true" />
-		    </targetElement>
-		</relation>
-		 <relation code="Promotion2Product" localized="false" autocreate="true" generate="true">
-		    <deployment table="Promotion2Product" typecode="17821" />
-		    <sourceElement qualifier="promotions" type="Promotion" cardinality="many">
-		        <modifiers read="true" write="true" search="true" optional="true" />
-		    </sourceElement>
-		    <targetElement qualifier="products" type="ProductVariant" cardinality="many">
-		        <modifiers read="true" write="true" search="true" optional="true" />
-		    </targetElement>
-		</relation>
-	</relations>
-	
-	<itemtypes>
-		<itemtype code="Manufacturer" generate="true" autocreate="true">
-		    <deployment table="Manufacturer" typecode="12345" />
-		    <attributes>
-			<attribute qualifier="name" type="java.lang.String">
-			    <persistence type="property"/>
-			</attribute>
-		    </attributes>
-		</itemtype>
-		<itemtype code="ProductVariant" generate="true" autocreate="true">
-		    <deployment table="ProductVariant" typecode="30091" />
-		    <attributes>
-			<attribute qualifier="name" type="java.lang.String">
-			    <persistence type="property"/>
-			</attribute>
-		    </attributes>
-		</itemtype>
-		<itemtype code="Promotion" generate="true" autocreate="true">
-		    <deployment table="Promotion" typecode="16732" />
-		    <attributes>
-			<attribute qualifier="name" type="java.lang.String">
-			    <persistence type="property"/>
-			</attribute>
-		    </attributes>	
-		</itemtype>
-		<itemtype code="TypeWithAttributes" generate="true" autocreate="true">
-		    <deployment table="TypeWithAttributes" typecode="21562" />
-		    <attributes>
-		    	<attribute qualifier="name" type="java.lang.String">
-			    <persistence type="property"/>
-			</attribute>
-			<attribute qualifier="manufacturerCollection" type="ManufacturerCollection">
-			    <persistence type="property"/>
-			</attribute>
-			<attribute qualifier="productCategory" type="ProductCategory">
-			    <persistence type="property"/>
-			</attribute>
-			<attribute qualifier="productStock" type="ProductStock">
-			    <persistence type="property"/>
-			</attribute>
-			<attribute qualifier="manufacturer" type="Manufacturer">
-			    <persistence type="property"/>
-			</attribute>
-			<attribute qualifier="promotion2Product" type="Promotion2Product">
-			    <persistence type="property"/>
-			</attribute>
-		    </attributes>
-		</itemtype>
-	</itemtypes>	
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+    <collectiontypes>
+        <collectiontype code="ProductsCollection" elementtype="Product" autocreate="true" generate="true"/>
+        <collectiontype code="ManufacturerCollection" elementtype="Manufacturer" autocreate="true" generate="true"/>
+    </collectiontypes>
+
+    <enumtypes>
+        <enumtype code="ProductCategory" autocreate="true" generate="true">
+            <value code="Electronics"/>
+            <value code="Clothing"/>
+            <value code="Sports"/>
+            <value code="Home"/>
+        </enumtype>
+
+        <enumtype code="DiscountType" autocreate="true" generate="true" dynamic="true">
+            <value code="Percentage"/>
+            <value code="FixedAmount"/>
+            <value code="BundleDiscount"/>
+        </enumtype>
+    </enumtypes>
+
+    <maptypes>
+        <maptype code="ProductStock" argumenttype="java.lang.Integer" returntype="java.lang.String" autocreate="true"
+                 generate="true"/>
+    </maptypes>
+
+    <relations>
+        <relation code="Product2Variant" localized="false" autocreate="true" generate="true">
+            <sourceElement qualifier="product" type="Product" cardinality="one">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement qualifier="variantItems" type="ProductVariant" cardinality="many">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+        <relation code="Promotion2Product" localized="false" autocreate="true" generate="true">
+            <deployment table="Promotion2Product" typecode="17821"/>
+            <sourceElement qualifier="promotions" type="Promotion" cardinality="many">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </sourceElement>
+            <targetElement qualifier="products" type="ProductVariant" cardinality="many">
+                <modifiers read="true" write="true" search="true" optional="true"/>
+            </targetElement>
+        </relation>
+    </relations>
+
+    <itemtypes>
+        <itemtype code="Manufacturer" generate="true" autocreate="true">
+            <deployment table="Manufacturer" typecode="12345"/>
+            <attributes>
+                <attribute qualifier="name" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <itemtype code="ProductVariant" generate="true" autocreate="true">
+            <deployment table="ProductVariant" typecode="30091"/>
+            <attributes>
+                <attribute qualifier="name" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <itemtype code="Promotion" generate="true" autocreate="true">
+            <deployment table="Promotion" typecode="16732"/>
+            <attributes>
+                <attribute qualifier="name" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <itemtype code="TypeWithAttributes" generate="true" autocreate="true">
+            <deployment table="TypeWithAttributes" typecode="21562"/>
+            <attributes>
+                <attribute qualifier="name" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="manufacturerCollection" type="ManufacturerCollection">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="productCategory" type="ProductCategory">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="productStock" type="ProductStock">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="manufacturer" type="Manufacturer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="promotion2Product" type="Promotion2Product">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+    </itemtypes>
 </items>
