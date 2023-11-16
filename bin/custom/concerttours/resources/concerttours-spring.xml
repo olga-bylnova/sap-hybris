@@ -87,4 +87,8 @@
     <bean id="concerttoursCustomSetup" class="concerttours.setup.ConcerttoursCustomSetup">
         <property name="importService" ref="importService"/>
     </bean>
+
+    <alias alias="productService" name="trainingProductService"/>
+    <bean id="trainingProductService" class="concerttours.service.impl.TrainingProductServiceImpl"
+          parent="defaultProductService"/>
 </beans>
