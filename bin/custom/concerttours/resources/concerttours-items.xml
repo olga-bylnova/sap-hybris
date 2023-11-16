@@ -40,7 +40,7 @@
             <sourceElement qualifier="bands" type="Band" collectiontype="set" cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true"/>
             </sourceElement>
-            <targetElement qualifier="types" type="ConcertType" cardinality="many">
+            <targetElement qualifier="types" type="MusicType" cardinality="many">
                 <modifiers read="true" write="true" search="true" optional="true"/>
             </targetElement>
         </relation>

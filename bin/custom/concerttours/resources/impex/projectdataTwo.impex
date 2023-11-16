@@ -9,5 +9,5 @@ INSERT_UPDATE Band; code[unique = true]; name      ; albumSales; history
                   ; A005               ; The Choir ; 49000     ; Enthusiastic, noisy gospel choir singing traditional gospel songs from the deep south
                   ; A007               ; The Quiet ; 1200      ; English choral society specialising in beautifully arranged, soothing melodies and songs
 
-INSERT_UPDATE CustomType; name[unique = true]; bandCollection(code); concertType(code); musicStock    ; band2MusicType(source(code), target(code))
-                        ; CustomType1        ; A001,A006           ; openair          ; 1->abc,2->dfe ; A001:openair
+INSERT_UPDATE CustomType; name[unique = true]; bandCollection(code); concertType(code); musicStock    ; band(code)
+                        ; CustomType1        ; A001,A006           ; openair          ; 1->abc,2->dfe ; A001
