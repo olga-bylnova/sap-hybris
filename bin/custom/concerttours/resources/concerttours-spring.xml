@@ -5,11 +5,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/aop
-           http://www.springframework.org/schema/aop/spring-aop.xsd">
-
+           http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="concerttours"/>
     <!--
     The hybris platform provides one single Spring application context for beans located at the jalo layer.
     Each extension can add beans to this context by specifying them at this configuration file.
@@ -85,5 +86,10 @@
 
     <bean id="concerttoursCustomSetup" class="concerttours.setup.ConcerttoursCustomSetup">
         <property name="importService" ref="importService"/>
+    </bean>
+
+    <alias name="defaultBandService" alias="bandService"/>
+    <bean id="defaultBandService" class="concerttours.service.impl.DefaultBandService">
+        <property name="bandDAO" ref="bandDAO"/>
     </bean>
 </beans>
