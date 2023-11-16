@@ -113,5 +113,24 @@
                 </attribute>
             </attributes>
         </itemtype>
+        <itemtype generate="true"
+                  code="ContactRequest"
+                  jaloclass="concerttours.jalo.ContactRequest"
+                  extends="GenericItem"
+                  autocreate="true">
+            <deployment table="ContactRequest" typecode="30333"/>
+            <attributes>
+                <attribute qualifier="message" type="java.lang.String">
+                    <description>Message</description>
+                    <modifiers initial="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="sender" type="java.lang.String">
+                    <description>Sender</description>
+                    <modifiers initial="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
     </itemtypes>
 </items>

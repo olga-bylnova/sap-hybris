@@ -4,26 +4,27 @@ import concerttours.daos.BandDAO;
 import concerttours.model.BandModel;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component(value = "bandDAO")
-public class DefaultBandDAO implements BandDAO
-{
+public class DefaultBandDAO implements BandDAO {
     /**
      * Use SAP
-     Commerce FlexibleSearchService for running queries against the database
+     * Commerce FlexibleSearchService for running queries against the database
      */
-    @Autowired
-    private FlexibleSearchService flexibleSearchService;
+    private final FlexibleSearchService flexibleSearchService;
+
+    public DefaultBandDAO(FlexibleSearchService flexibleSearchService) {
+        this.flexibleSearchService = flexibleSearchService;
+    }
+
     /**
      * Finds all Bands by performing a FlexibleSearch using the {@link FlexibleSearchService}.
      */
     @Override
-    public List<BandModel> findBands()
-    {
+    public List<BandModel> findBands() {
         // Build a query for the flexible search.
         final String queryString = //
                 "SELECT {p:" + BandModel.PK + "} "//
@@ -36,20 +37,20 @@ public class DefaultBandDAO implements BandDAO
         //query.setStart(start);
         //query.setCount(count);
         // Return the list of BandModels.
-        return flexibleSearchService.<BandModel> search(query).getResult();
+        return flexibleSearchService.<BandModel>search(query).getResult();
     }
+
     /**
      * Finds all Bands by given code by performing a FlexibleSearch using the {@link FlexibleSearchService}.
      */
     @Override
-    public List<BandModel> findBandsByCode(final String code)
-    {
+    public List<BandModel> findBandsByCode(final String code) {
         final String queryString = //
                 "SELECT {p:" + BandModel.PK + "}" //
                         + "FROM {" + BandModel._TYPECODE + " AS p} "//
                         + "WHERE " + "{p:" + BandModel.CODE + "}=?code ";
         final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
         query.addQueryParameter("code", code);
-        return flexibleSearchService.<BandModel> search(query).getResult();
+        return flexibleSearchService.<BandModel>search(query).getResult();
     }
 }
