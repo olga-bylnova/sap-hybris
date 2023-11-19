@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("bandService")
 public class DefaultBandService implements BandService
 {
     private final BandDAO bandDAO;
