@@ -87,4 +87,9 @@
         <property name="description" type="String"/>
         <property name="concerts" type="java.util.List&lt;concerttours.data.ConcertSummaryData&gt;"/>
     </bean>
+    <bean class="concerttours.data.ContactRequestData">
+        <description>Data object representing a contact request</description>
+        <property name="message" type="String"/>
+        <property name="sender" type="String"/>
+    </bean>
 </beans>
