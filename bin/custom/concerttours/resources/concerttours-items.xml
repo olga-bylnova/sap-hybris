@@ -40,7 +40,7 @@
             <sourceElement qualifier="bands" type="Band" collectiontype="set" cardinality="many" ordered="false">
                 <modifiers read="true" write="true" search="true" optional="true"/>
             </sourceElement>
-            <targetElement qualifier="types" type="ConcertType" cardinality="many">
+            <targetElement qualifier="types" type="MusicType" cardinality="many">
                 <modifiers read="true" write="true" search="true" optional="true"/>
             </targetElement>
         </relation>
@@ -109,6 +109,25 @@
                     <persistence type="property"/>
                 </attribute>
                 <attribute qualifier="band2MusicType" type="Band2MusicType">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <itemtype generate="true"
+                  code="ContactRequest"
+                  jaloclass="concerttours.jalo.ContactRequest"
+                  extends="GenericItem"
+                  autocreate="true">
+            <deployment table="ContactRequest" typecode="30333"/>
+            <attributes>
+                <attribute qualifier="message" type="java.lang.String">
+                    <description>Message</description>
+                    <modifiers initial="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="sender" type="java.lang.String">
+                    <description>Sender</description>
+                    <modifiers initial="true"/>
                     <persistence type="property"/>
                 </attribute>
             </attributes>
