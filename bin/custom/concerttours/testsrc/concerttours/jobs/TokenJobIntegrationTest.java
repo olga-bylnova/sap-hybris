@@ -1,4 +1,4 @@
-package concerttours.cronjobs;
+package concerttours.jobs;
 
 import concerttours.model.TokenTypeModel;
 import de.hybris.bootstrap.annotations.IntegrationTest;
@@ -16,9 +16,9 @@ import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 @IntegrationTest
-public class TokenCronJobIntegrationTest extends ServicelayerTransactionalTest {
+public class TokenJobIntegrationTest extends ServicelayerTransactionalTest {
     @Resource
-    private TokenCronJob tokenCronJob;
+    private TokenJob tokenJob;
     @Resource
     private ModelService modelService;
 
@@ -38,7 +38,7 @@ public class TokenCronJobIntegrationTest extends ServicelayerTransactionalTest {
 
     @Test
     public void testCronJob() {
-        final PerformResult result = tokenCronJob.perform(null);
+        final PerformResult result = tokenJob.perform(null);
         Assert.assertEquals("Job did not perform correctly", CronJobResult.SUCCESS, result.getResult());
     }
 }

@@ -1,4 +1,4 @@
-package concerttours.cronjobs;
+package concerttours.jobs;
 
 import concerttours.model.TokenTypeModel;
 import concerttours.service.TokenTypeService;
@@ -11,11 +11,11 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TokenCronJob extends AbstractJobPerformable<CronJobModel> {
-    private static final Logger LOG = Logger.getLogger(TokenCronJob.class);
+public class TokenJob extends AbstractJobPerformable<CronJobModel> {
+    private static final Logger LOG = Logger.getLogger(TokenJob.class);
     private final TokenTypeService tokenService;
 
-    public TokenCronJob(TokenTypeService tokenService) {
+    public TokenJob(TokenTypeService tokenService) {
         this.tokenService = tokenService;
     }
 
