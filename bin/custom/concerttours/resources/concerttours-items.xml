@@ -148,7 +148,15 @@
                     <persistence type="property"/>
                 </attribute>
                 <attribute qualifier="content" type="java.lang.String">
-                    <description>fuller description of the news item</description>
+                    <description>content for the news item</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <itemtype generate="true" code="TokenType" autocreate="true">
+            <deployment table="TokenType" typecode="30335"/>
+            <attributes>
+                <attribute qualifier="token" type="java.lang.String">
                     <persistence type="property"/>
                 </attribute>
             </attributes>
