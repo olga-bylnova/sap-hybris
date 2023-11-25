@@ -22,7 +22,7 @@ public class TokenJob extends AbstractJobPerformable<CronJobModel> {
     @Override
     public PerformResult perform(CronJobModel cronJob) {
         TokenTypeModel tokenTypeModel = tokenService.getToken();
-        tokenService.saveToken(tokenTypeModel.getToken() + "_newValue");
+        tokenService.saveToken("_newValue");
         LOG.info("Setting new token value");
 
         return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
