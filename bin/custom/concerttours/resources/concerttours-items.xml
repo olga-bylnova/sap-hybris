@@ -56,10 +56,11 @@
                 <attribute qualifier="name" type="java.lang.String">
                     <description>name of band</description>
                     <persistence type="property"/>
+                    <modifiers optional="false" unique="true"/>
                 </attribute>
                 <attribute qualifier="history" type="localized:java.lang.String">
                     <description>history of band</description>
-                    <persistence type="property" />
+                    <persistence type="property"/>
                 </attribute>
                 <attribute qualifier="albumSales" type="java.lang.Long">
                     <description>official global album sales</description>
@@ -72,7 +73,7 @@
             <attributes>
                 <attribute qualifier="hashtag" type="localized:java.lang.String">
                     <description>hashtag of concert tour for social media</description>
-                    <persistence type="property" />
+                    <persistence type="property"/>
                 </attribute>
             </attributes>
         </itemtype>
