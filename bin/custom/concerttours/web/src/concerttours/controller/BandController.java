@@ -1,33 +1,42 @@
 package concerttours.controller;
 
+import concerttours.data.BandData;
+import concerttours.facades.BandFacade;
 import concerttours.model.BandModel;
 import concerttours.service.BandService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/band")
+@RequestMapping("/bands")
 public class BandController {
-    private final BandService bandService;
+    private final BandFacade bandFacade;
 
-    public BandController(BandService bandService) {
-        this.bandService = bandService;
+    public BandController(BandFacade bandFacade) {
+        this.bandFacade = bandFacade;
     }
 
-    @GetMapping
-    public String getBand(Model model, @RequestParam("code") String code) {
-        BandModel band = null;
+    @GetMapping("/{code}")
+    public String getBand(Model model, @PathVariable String code) {
+        BandData band = null;
         if (code != null && !code.isBlank()) {
             try {
-                band = bandService.getBandForCode(code);
+                band = bandFacade.getBand(code);
             } catch (RuntimeException e) {
                 return "404";
             }
         }
         model.addAttribute("band", band);
-        return "band";
+        return "BandDetails";
+    }
+
+    @GetMapping
+    public String getBands(Model model) {
+        model.addAttribute("bands", bandFacade.getBands());
+        return "BandList";
     }
 }
