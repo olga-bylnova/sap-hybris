@@ -9,6 +9,7 @@ import concerttours.service.BandService;
 import de.hybris.platform.core.model.media.MediaContainerModel;
 import de.hybris.platform.core.model.media.MediaFormatModel;
 import de.hybris.platform.core.model.product.ProductModel;
+import de.hybris.platform.servicelayer.config.ConfigurationService;
 import de.hybris.platform.servicelayer.media.MediaService;
 import org.springframework.stereotype.Component;
 
@@ -18,28 +19,36 @@ import java.util.Locale;
 
 @Component("bandFacade")
 public class DefaultBandFacade implements BandFacade {
+    public static final String BAND_LIST_FORMAT = "band.list.format.name";
+    private static final String BAND_DETAIL_FORMAT = "band.detail.format.name";
     private final BandService bandService;
     private final MediaService mediaService;
+    private final ConfigurationService configService;
 
-    public DefaultBandFacade(BandService bandService, MediaService mediaService) {
+    public DefaultBandFacade(BandService bandService, MediaService mediaService, ConfigurationService configService) {
         this.bandService = bandService;
         this.mediaService = mediaService;
+        this.configService = configService;
     }
 
     @Override
     public List<BandData> getBands() {
         final List<BandModel> bandModels = bandService.getBands();
         final List<BandData> bandFacadeData = new ArrayList<>();
-        final MediaFormatModel format = mediaService.getFormat("bandList");
-        for (final BandModel sm : bandModels) {
-            final BandData sfd = new BandData();
-            sfd.setId(sm.getCode());
-            sfd.setName(sm.getName());
-            sfd.setDescription(sm.getHistory());
-            sfd.setAlbumsSold(sm.getAlbumSales());
-            sfd.setImageURL(getImageURL(sm, format));
-
-            bandFacadeData.add(sfd);
+        if (bandModels != null && !bandModels.isEmpty())
+        {
+            final String mediaFormatName = configService.getConfiguration().getString(BAND_LIST_FORMAT);
+            System.out.println("mediaFormatName:" + mediaFormatName);
+            final MediaFormatModel format = mediaService.getFormat(mediaFormatName);
+            for (final BandModel sm : bandModels) {
+                final BandData sfd = new BandData();
+                sfd.setId(sm.getCode());
+                sfd.setName(sm.getName());
+                sfd.setDescription(sm.getHistory(Locale.ENGLISH));
+                sfd.setAlbumsSold(sm.getAlbumSales());
+                sfd.setImageURL(getImageURL(sm, format));
+                bandFacadeData.add(sfd);
+            }
         }
         return bandFacadeData;
     }
@@ -53,7 +62,6 @@ public class DefaultBandFacade implements BandFacade {
         if (band == null) {
             return null;
         }
-
         // Create a list of genres
         final List<String> genres = new ArrayList<>();
         if (band.getTypes() != null) {
@@ -61,7 +69,7 @@ public class DefaultBandFacade implements BandFacade {
                 genres.add(musicType.getCode());
             }
         }
-        // Create a list of TourSummaryData from the matches
+        // Create a list of TourSummaryData
         final List<TourSummaryData> tourHistory = new ArrayList<>();
         if (band.getTours() != null) {
             for (final ProductModel tour : band.getTours()) {
@@ -74,7 +82,8 @@ public class DefaultBandFacade implements BandFacade {
             }
         }
         // Now we can create the BandData transfer object
-        final MediaFormatModel format = mediaService.getFormat("bandDetail");
+        final String mediaFormatName = configService.getConfiguration().getString(BAND_DETAIL_FORMAT);
+        final MediaFormatModel format = mediaService.getFormat(mediaFormatName);
         final BandData bandData = new BandData();
         bandData.setId(band.getCode());
         bandData.setName(band.getName());

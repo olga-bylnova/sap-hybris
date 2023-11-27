@@ -35,11 +35,11 @@ INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias                 
                             ; SirkenImage             ; omphaSmall.jpg,omphaBig.jpg         ;
                             ; TheChoirImage           ; orchestraSmall.jpg,orchestraBig.jpg ;
 
-INSERT_UPDATE Band; code[unique = true]; name      ; albumSales; image(qualifier)
-                  ; A001               ; yRock     ; 1000000   ; yRockImage
-                  ; A006               ; yBand     ;           ; yBandImage
-                  ; A003               ; yJazz     ; 7         ; yJazzImage
-                  ; A004               ; Banned    ; 427       ; BannedImage
-                  ; A002               ; Sirken    ; 2000      ; SirkenImage
-                  ; A005               ; The Choir ; 49000     ; TheChoirImage
-                  ; A007               ; The Quiet ; 1200      ; ;
+INSERT_UPDATE Band; code[unique = true]; name      ; albumSales; image(qualifier); history
+                  ; A001               ; yRock     ; 1000000   ; yRockImage      ; Occasional tribute rock band comprising senior managers from a leading commerce software vendor
+                  ; A006               ; yBand     ;           ; yBandImage      ; Dutch tribute rock band formed in 2013 playing classic rock tunes from the sixties, seventies and eighties
+                  ; A003               ; yJazz     ; 7         ; yJazzImage      ; Experimental Jazz group from London playing many musical notes together in unexpected combinations and sequences
+                  ; A004               ; Banned    ; 427       ; BannedImage     ; Rejuvenated Polish boy band from the 1990s - this genre of pop music at its most dubious best
+                  ; A002               ; Sirken    ; 2000      ; SirkenImage     ; A cappella singing group based in Munich an uplifting blend of traditional and contemporaneous songs
+                  ; A005               ; The Choir ; 49000     ; TheChoirImage   ; Enthusiastic, noisy gospel choir singing traditional gospel songs from the deep south
+                  ; A007               ; The Quiet ; 1200      ;                 ; English choral society specialising in beautifully arranged, soothing melodies and songs
