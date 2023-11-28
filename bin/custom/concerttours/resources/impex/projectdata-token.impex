@@ -1,0 +1,4 @@
+# ImpEx for Importing Bands into Little Concert Tours Store
+
+INSERT_UPDATE TokenType; token[unique = true]
+                  ; A001

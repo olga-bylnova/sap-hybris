@@ -91,4 +91,9 @@
     <alias alias="productService" name="trainingProductService"/>
     <bean id="trainingProductService" class="concerttours.service.impl.TrainingProductServiceImpl"
           parent="defaultProductService"/>
+
+    <bean id="BandInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="bandAlbumSalesInterceptor" />
+        <property name="typeCode" value="Band" />
+    </bean>
 </beans>
