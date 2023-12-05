@@ -1,6 +1,7 @@
 package concerttours.facades.impl;
 
 import concerttours.data.BandData;
+import concerttours.data.ProducerData;
 import concerttours.data.TourSummaryData;
 import concerttours.enums.MusicType;
 import concerttours.facades.BandFacade;
@@ -76,6 +77,11 @@ public class DefaultBandFacade implements BandFacade {
                 final TourSummaryData summary = new TourSummaryData();
                 summary.setId(tour.getCode());
                 summary.setTourName(tour.getName(Locale.ENGLISH));
+
+                final ProducerData producerData = new ProducerData();
+                producerData.setName(tour.getProducer().getName());
+
+                summary.setProducer(producerData);
                 // making the big assumption that all variants are concerts and ignore product catalogs
                 summary.setNumberOfConcerts(Integer.toString(tour.getVariants().size()));
                 tourHistory.add(summary);

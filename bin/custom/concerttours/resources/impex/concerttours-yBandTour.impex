@@ -16,9 +16,9 @@ INSERT_UPDATE CatalogVersion; catalog(id)[unique = true]; version[unique = true]
                             ; $productCatalog           ; Online                ; true  ; en                ; employeegroup
 
 # Insert Products
-INSERT_UPDATE Product; code[unique = true]; name                  ; band(code); hashtag[lang = en]; hashtag[lang = de]; $supercategories; manufacturerName; manufacturerAID; unit(code); ean; variantType(code); $catalogVersion; $approved
-                     ; 201701             ; The Grand Little Tour ; A001      ; GrandLittle       ; GrossWenig        ;                 ; x               ; y              ; pieces    ;    ; Concert
-
+INSERT_UPDATE Product; code[unique = true]; name                  ; band(code); hashtag[lang = en]; hashtag[lang = de]; producer(code); $supercategories; manufacturerName; manufacturerAID; unit(code); ean; variantType(code); $catalogVersion; $approved
+                     ; 201701             ; The Grand Little Tour ; A001      ; GrandLittle       ; GrossWenig        ; P001          ;                 ; x               ; y              ; pieces    ;    ; Concert
+                     ; 202301             ; The Sample Tour       ; A001      ; GrandLittle       ; GrossWenig        ; P002          ;                 ; x               ; y              ; pieces    ;    ; Concert
 # Insert Products
 INSERT_UPDATE Concert; code[unique = true]; name                  ; date[dateformat = dd.MM.yyyy]; venue                     ; concertType(code); baseProduct(code); $catalogVersion; $approved
                      ; 20170101           ; Grand Tour - Munich   ; 03.02.2017                   ; "hybris Munich, Germany"  ; openair          ; 201701           ;
@@ -27,3 +27,4 @@ INSERT_UPDATE Concert; code[unique = true]; name                  ; date[datefor
                      ; 20170104           ; Grand Tour - Gliwice  ; 04.11.2017                   ; "hybris Gliwice, Poland"  ; indoor           ; 201701           ;
                      ; 20170105           ; Grand Tour - Boulder  ; 07.01.2018                   ; "hybris Boulder, USA"     ; indoor           ; 201701           ;
                      ; 20170106           ; Grand Tour - Boston   ;                              ; "hybris Boston, USA"      ;                  ; 201701           ;
+                     ; 20230106           ; Sample Tour - Boston  ;                              ; "hybris Boston, USA"      ;                  ; 202301           ;

@@ -1,0 +1,4 @@
+INSERT_UPDATE Producer; code[unique = true]; name
+                      ; P001               ; Notorious BIG
+                      ; P002               ; Little Rock
+                      ; P003               ; DY
